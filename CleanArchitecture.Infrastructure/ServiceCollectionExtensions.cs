@@ -1,4 +1,6 @@
 ﻿using CleanArchitecture.Infrastructure.Persistence;
+using CleanArchitecture.Infrastructure.Persistence.Services;
+using CleanArchitecture.SharedKernel.Services.ApiKey;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,11 @@ public static class ServiceCollectionExtensions
 
         //Add and configure database context
         services.AddDbContext<CleanArchitectureContext>(options => options.UseSqlServer(connectionString));
+
+        //Add services
+        services.AddScoped<UserService>();
+        services.AddScoped<ApiKeyService>();
+        services.AddScoped<IApiKeyValidationService, ApiKeyValidationService>();
 
         return services;
     }

@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Core.Exceptions;
+﻿using CleanArchitecture.Infrastructure.Persistence.Exceptions;
 using CleanArchitecture.SharedKernel.Services.Jwt;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;

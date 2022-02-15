@@ -21,7 +21,7 @@ public static class ServiceCollectionExtensions
                     var headers = context.Request.Headers;
                     return headers switch
                     {
-                        var x when x["X-Api-Key"].FirstOrDefault() != null => ApiKeyDefaults.AuthenticationScheme,
+                        var x when x["Api-Key"].FirstOrDefault() != null => ApiKeyDefaults.AuthenticationScheme,
                         _ => JwtBearerDefaults.AuthenticationScheme
                     };
                 };
@@ -42,8 +42,9 @@ public static class ServiceCollectionExtensions
         services
             .AddAuthentication()
             .AddJwtBearer(options => options.TokenValidationParameters = tokenValidationParameters);
-        services.AddScoped<IJwtService, JwtService>();
-        services.Configure<JwtSettings>(options => options.TokenValidationParameters = tokenValidationParameters);
+        services
+            .AddScoped<IJwtService, JwtService>()
+            .Configure<JwtSettings>(options => options.TokenValidationParameters = tokenValidationParameters);
 
         //Api Key authentication
         services

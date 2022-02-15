@@ -1,6 +1,6 @@
 ﻿using CleanArchitecture.SharedKernel.Interfaces;
 
-namespace CleanArchitecture.Core.Entities;
+namespace CleanArchitecture.Infrastructure.Persistence.Entities;
 
 public partial class User : IAggregateRoot
 {

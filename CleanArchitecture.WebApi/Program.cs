@@ -26,8 +26,8 @@ if (app.Environment.IsDevelopment())
 app.UseSerilogRequestLogging(options => options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} ({UserId}) responded {StatusCode} in {Elapsed:0.0000}ms");
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
+app.UseExceptionHandler(GlobalErrorHandler.Configuration);
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseExceptionHandler(GlobalErrorHandler.Configuration);
 app.MapControllers();
 app.Run();

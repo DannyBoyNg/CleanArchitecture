@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Core.Entities;
+﻿using CleanArchitecture.Infrastructure.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Infrastructure.Persistence
@@ -14,11 +14,17 @@ namespace CleanArchitecture.Infrastructure.Persistence
         {
         }
 
+        public virtual DbSet<ApiKey> ApiKeys { get; set; } = null!;
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ApiKey>(entity =>
+            {
+                entity.HasKey(e => e.Token);
+            });
+
             modelBuilder.Entity<RefreshToken>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.Token });

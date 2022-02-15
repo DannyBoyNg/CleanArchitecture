@@ -8,22 +8,41 @@ namespace CleanArchitecture.SharedKernel.Services.ApiKey
 {
     public class ApiKeyHandler : AuthenticationHandler<ApiKeyOptions>
     {
-        public ApiKeyHandler(IOptionsMonitor<ApiKeyOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock) : base(options, logger, encoder, clock)
+        private readonly IApiKeyValidationService apiKeyValidationService;
+
+        public ApiKeyHandler(
+            IOptionsMonitor<ApiKeyOptions> options,
+            ILoggerFactory logger,
+            UrlEncoder encoder,
+            ISystemClock clock,
+            IApiKeyValidationService apiKeyValidationService)
+            : base(options, logger, encoder, clock)
         {
+            this.apiKeyValidationService = apiKeyValidationService;
         }
 
-        protected override Task<AuthenticateResult> HandleAuthenticateAsync()
+        protected async override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            var claims = new List<Claim> { 
-                new Claim(ClaimTypes.Name, "TestUser"),
-                new Claim(ClaimTypes.NameIdentifier, "123456"),
-                new Claim(ClaimTypes.Role, "Administrators")
-            };
+            //Get api key from header
+            if (!Request.Headers.TryGetValue("API-KEY", out var apiKey))
+            {
+                return AuthenticateResult.NoResult();
+            }
+
+            //Parse Guid
+            if (!Guid.TryParse(apiKey, out var guid)) throw new ApiKeyInvalidException();
+
+            //check is api key is valid
+            var claims = await apiKeyValidationService.ValidateAsync(guid);
+            return Success(claims);
+        }
+
+        private AuthenticateResult Success(IEnumerable<Claim> claims)
+        {
             var claimsIdentity = new ClaimsIdentity(claims, Scheme.Name);
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             var ticket = new AuthenticationTicket(claimsPrincipal, Scheme.Name);
-
-            return Task.FromResult(AuthenticateResult.Success(ticket));
+            return AuthenticateResult.Success(ticket);
         }
     }
 }

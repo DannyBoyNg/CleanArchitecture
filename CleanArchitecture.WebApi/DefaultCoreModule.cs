@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Autofac;
+﻿using Autofac;
 using CleanArchitecture.Infrastructure.Persistence;
 using CleanArchitecture.SharedKernel.Interfaces;
 using Module = Autofac.Module;
