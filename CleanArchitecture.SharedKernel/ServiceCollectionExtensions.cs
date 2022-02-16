@@ -49,7 +49,7 @@ public static class ServiceCollectionExtensions
         //Api Key authentication
         services
             .AddAuthentication()
-            .AddScheme<ApiKeyOptions, ApiKeyHandler>(ApiKeyDefaults.AuthenticationScheme, null);
+            .AddApiKey();
 
         //CORS
         services.AddCors(options =>
