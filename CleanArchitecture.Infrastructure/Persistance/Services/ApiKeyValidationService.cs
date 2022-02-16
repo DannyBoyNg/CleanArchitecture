@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace CleanArchitecture.Infrastructure.Persistence.Services;
 
-public class ApiKeyValidationService : IApiKeyValidationService
+public class ApiKeyValidationService : IApiKeyValidator
 {
     private readonly IRepository<ApiKey> repo;
 

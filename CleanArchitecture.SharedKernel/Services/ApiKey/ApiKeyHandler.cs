@@ -8,32 +8,32 @@ namespace CleanArchitecture.SharedKernel.Services.ApiKey
 {
     public class ApiKeyHandler : AuthenticationHandler<ApiKeyOptions>
     {
-        private readonly IApiKeyValidationService apiKeyValidationService;
+        private readonly IApiKeyValidator apiKeyValidator;
 
         public ApiKeyHandler(
             IOptionsMonitor<ApiKeyOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock,
-            IApiKeyValidationService apiKeyValidationService)
+            IApiKeyValidator apiKeyValidator)
             : base(options, logger, encoder, clock)
         {
-            this.apiKeyValidationService = apiKeyValidationService;
+            this.apiKeyValidator = apiKeyValidator;
         }
 
         protected async override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             //Get api key from header
-            if (!Request.Headers.TryGetValue("API-KEY", out var apiKey))
+            if (!Request.Headers.TryGetValue(Options.ApiKeyHeader, out var apiKey))
             {
                 return AuthenticateResult.NoResult();
             }
 
             //Parse Guid
-            if (!Guid.TryParse(apiKey, out var guid)) throw new ApiKeyInvalidException();
+            if (!Guid.TryParse(apiKey, out var guid)) return AuthenticateResult.Fail(new ApiKeyInvalidException());
 
             //check is api key is valid
-            var claims = await apiKeyValidationService.ValidateAsync(guid);
+            var claims = await apiKeyValidator.ValidateAsync(guid);
             return Success(claims);
         }
 

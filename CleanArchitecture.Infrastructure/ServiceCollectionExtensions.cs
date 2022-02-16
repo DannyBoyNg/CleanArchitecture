@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
         //Add services
         services.AddScoped<UserService>();
         services.AddScoped<ApiKeyService>();
-        services.AddScoped<IApiKeyValidationService, ApiKeyValidationService>();
+        services.AddScoped<IApiKeyValidator, ApiKeyValidationService>();
 
         return services;
     }

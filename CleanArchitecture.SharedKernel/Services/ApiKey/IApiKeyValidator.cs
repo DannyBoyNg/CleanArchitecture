@@ -2,7 +2,7 @@
 
 namespace CleanArchitecture.SharedKernel.Services.ApiKey;
 
-public interface IApiKeyValidationService
+public interface IApiKeyValidator
 {
     Task<IEnumerable<Claim>> ValidateAsync(Guid apiKeyToken);
 }
