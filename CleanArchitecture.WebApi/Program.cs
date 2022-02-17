@@ -13,6 +13,7 @@ builder.Services.AddSharedKernelServices(configuration);
 builder.Services.AddInfrastructureServices(configuration);
 builder.Services.AddCoreServices(configuration);
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => options.EnableAnnotations());
 var app = builder.Build();

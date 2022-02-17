@@ -16,12 +16,11 @@ public static class GlobalErrorHandler
             {
                 errorApp.Run(async context =>
                 {
-                    //Enrich logs with extra data
+                    //Enrich logs with the userId
                     var diagnosticContext = errorApp.ApplicationServices.GetRequiredService<IDiagnosticContext>();
                     if (!int.TryParse(ClaimsHelper.GetClaim(context.User, "uid"), out int uid)) uid = 0;
-                    var ipAddress = context.Connection?.RemoteIpAddress?.ToString();
-                    if (uid != 0) diagnosticContext.Set("UserId", uid);
-                    diagnosticContext.Set("IpAddress", ipAddress);
+                    //if (uid != 0) 
+                    diagnosticContext.Set("UserId", uid);
 
                     //Get the exception that was thrown
                     var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
