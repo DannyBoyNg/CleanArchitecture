@@ -56,7 +56,7 @@ public static class ServiceCollectionExtensions
         {
             options.AddPolicy("CorsPolicy",
                 builder => builder
-                .WithOrigins(new string[] { "http://localhost", "http://localhost:4200", "https://localhost:4200" })
+                .WithOrigins(new string[] { "http://localhost", "http://localhost:4200", "https://localhost:7299" , "https://localhost:5192" })
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .WithExposedHeaders(new string[] { "Content-Disposition", "WWW-Authenticate" })

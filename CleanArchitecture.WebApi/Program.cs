@@ -2,6 +2,7 @@ using CleanArchitecture.SharedKernel;
 using CleanArchitecture.Core;
 using CleanArchitecture.WebApi;
 using CleanArchitecture.Infrastructure;
+using CleanArchitecture.WebApi.Configuration;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseExceptionHandler(GlobalErrorHandler.Configuration);
-app.UseSerilogRequestLogging(options => options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} ({UserId}) responded {StatusCode} in {Elapsed:0.0000}ms");
+app.UseSerilogRequestLogging(GlobalLogging.Configuration);
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseAuthentication();

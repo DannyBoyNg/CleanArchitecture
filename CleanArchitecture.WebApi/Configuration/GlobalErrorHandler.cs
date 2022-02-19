@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-namespace CleanArchitecture.WebApi;
+namespace CleanArchitecture.WebApi.Configuration;
 
 public static class GlobalErrorHandler
 {
