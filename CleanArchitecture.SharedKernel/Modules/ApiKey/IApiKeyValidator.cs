@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace CleanArchitecture.SharedKernel.Services.ApiKey;
+namespace CleanArchitecture.SharedKernel.Modules.ApiKey;
 
 public interface IApiKeyValidator
 {

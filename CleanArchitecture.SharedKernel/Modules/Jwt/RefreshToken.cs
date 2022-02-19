@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Infrastructure.Persistence.Entities;
+﻿namespace CleanArchitecture.SharedKernel.Modules.Jwt;
 
 public partial class RefreshToken
 {
@@ -6,5 +6,4 @@ public partial class RefreshToken
     public string Token { get; set; } = null!;
     public DateTime ExpiresAtUtc { get; set; }
 
-    public virtual User User { get; set; } = null!;
 }

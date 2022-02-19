@@ -1,5 +1,5 @@
-﻿using CleanArchitecture.Infrastructure.Persistence.Exceptions;
-using CleanArchitecture.SharedKernel.Services.Jwt;
+﻿using CleanArchitecture.SharedKernel.Modules.Jwt;
+using CleanArchitecture.SharedKernel.Services.UserManagement;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;

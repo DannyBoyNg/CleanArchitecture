@@ -1,12 +1,15 @@
-﻿using System.Net.Mail;
+﻿using Microsoft.Extensions.Options;
+using System.Net.Mail;
 
-namespace CleanArchitecture.Infrastructure.EmailService
+namespace CleanArchitecture.Infrastructure.Email
 {
     public class EmailService : IEmailService
     {
         EmailSettings Settings { get; set; }
 
         public EmailService(EmailSettings settings) => Settings = settings;
+
+        public EmailService(IOptions<EmailSettings> settings) => Settings = settings.Value;
 
         public void SendEmail(MailAddress from, IEnumerable<string> to, string subject, string body, IEnumerable<File>? files = null, IEnumerable<string>? cc = null, IEnumerable<string>? bcc = null, MailPriority? priority = null)
         {

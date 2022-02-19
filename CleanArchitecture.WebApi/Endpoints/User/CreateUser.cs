@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Microsoft.AspNetCore.Authorization;
-using CleanArchitecture.Infrastructure.Persistence.Services;
+using CleanArchitecture.SharedKernel.Services.UserManagement;
 
 namespace CleanArchitecture.WebApi.Endpoints.User;
 
@@ -18,7 +18,7 @@ public class CreateUser : ControllerBase
 
     [HttpPost("users")]
     [SwaggerOperation(Summary = "Creates an user", Description = "Creates an user", OperationId = "User.Create", Tags = new[] { "UserEndpoint" })]
-    public async Task<ActionResult> HandleAsync(CreateUserRequest req)
+    public async Task<ActionResult> Handle(CreateUserRequest req)
     {
         //var user = await userService.CreateUserAsync(req.Name, req.Password, req.Email);
         return Ok();

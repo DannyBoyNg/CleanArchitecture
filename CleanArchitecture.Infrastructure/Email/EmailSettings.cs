@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace CleanArchitecture.Infrastructure.EmailService
+namespace CleanArchitecture.Infrastructure.Email
 {
     public class EmailSettings
     {

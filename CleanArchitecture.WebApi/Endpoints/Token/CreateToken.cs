@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.SharedKernel.Services.Jwt;
+﻿using CleanArchitecture.SharedKernel.Modules.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Swashbuckle.AspNetCore.Annotations;

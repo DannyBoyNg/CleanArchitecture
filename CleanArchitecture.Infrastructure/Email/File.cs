@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Infrastructure.EmailService
+﻿namespace CleanArchitecture.Infrastructure.Email
 {
     public class File
     {

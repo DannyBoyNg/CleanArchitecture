@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace CleanArchitecture.Infrastructure.EmailService
+namespace CleanArchitecture.Infrastructure.Email
 {
     [Serializable]
     internal class EmailHostNotSetException : Exception

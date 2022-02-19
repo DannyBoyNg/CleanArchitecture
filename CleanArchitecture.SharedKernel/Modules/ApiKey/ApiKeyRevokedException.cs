@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace CleanArchitecture.SharedKernel.Services.ApiKey;
+namespace CleanArchitecture.SharedKernel.Modules.ApiKey;
 
 [Serializable]
 public class ApiKeyRevokedException : Exception

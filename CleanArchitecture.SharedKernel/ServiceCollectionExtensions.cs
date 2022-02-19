@@ -1,5 +1,6 @@
-﻿using CleanArchitecture.SharedKernel.Services.ApiKey;
-using CleanArchitecture.SharedKernel.Services.Jwt;
+﻿using CleanArchitecture.SharedKernel.Modules.ApiKey;
+using CleanArchitecture.SharedKernel.Modules.Jwt;
+using CleanArchitecture.SharedKernel.Services.UserManagement;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,10 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddSharedKernelServices(this IServiceCollection services, IConfiguration configuration)
     {
+        //Service Layer
+        services.AddScoped<UserService>();
+        services.AddScoped<ApiKeyService>();
+
         //Decide which authentication scheme should be used
         services
             .AddAuthentication("SchemeSelector")
@@ -48,6 +53,7 @@ public static class ServiceCollectionExtensions
 
         //Api Key authentication
         services
+            .AddScoped<IApiKeyValidator, ApiKeyValidator>()
             .AddAuthentication()
             .AddApiKey();
 

@@ -1,8 +1,6 @@
-﻿using CleanArchitecture.Infrastructure.Persistence.Entities;
-using CleanArchitecture.Infrastructure.Persistence.Exceptions;
-using CleanArchitecture.SharedKernel.Interfaces;
+﻿using CleanArchitecture.SharedKernel.Interfaces;
 
-namespace CleanArchitecture.Infrastructure.Persistence.Services;
+namespace CleanArchitecture.SharedKernel.Modules.ApiKey;
 
 public class ApiKeyService
 {
@@ -28,7 +26,7 @@ public class ApiKeyService
     public async void RevokeAsync(Guid token, int userId)
     {
         var apiToken = await apiKeyRepo.GetByIdAsync(token);
-        if (apiToken == null) throw new DbEntityNotFoundException();
+        if (apiToken == null) throw new ApiKeyInvalidException();
         apiToken.Revoked = true;
         apiToken.RevokedAt = DateTime.UtcNow;
         apiToken.RevokedBy = userId;
@@ -38,7 +36,7 @@ public class ApiKeyService
     public async void DeleteAsync(Guid token)
     {
         var apiToken = await apiKeyRepo.GetByIdAsync(token);
-        if (apiToken == null) throw new DbEntityNotFoundException();
+        if (apiToken == null) throw new ApiKeyInvalidException();
         await apiKeyRepo.DeleteAsync(apiToken);
     }
 }

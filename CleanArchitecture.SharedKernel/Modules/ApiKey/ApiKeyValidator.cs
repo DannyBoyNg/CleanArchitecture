@@ -1,15 +1,13 @@
-﻿using CleanArchitecture.Infrastructure.Persistence.Entities;
-using CleanArchitecture.SharedKernel.Interfaces;
-using CleanArchitecture.SharedKernel.Services.ApiKey;
+﻿using CleanArchitecture.SharedKernel.Interfaces;
 using System.Security.Claims;
 
-namespace CleanArchitecture.Infrastructure.Persistence.Services;
+namespace CleanArchitecture.SharedKernel.Modules.ApiKey;
 
-public class ApiKeyValidationService : IApiKeyValidator
+public class ApiKeyValidator : IApiKeyValidator
 {
     private readonly IRepository<ApiKey> repo;
 
-    public ApiKeyValidationService(IRepository<ApiKey> repo)
+    public ApiKeyValidator(IRepository<ApiKey> repo)
     {
         this.repo = repo;
     }

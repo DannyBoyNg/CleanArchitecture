@@ -1,14 +1,9 @@
 ﻿using CleanArchitecture.SharedKernel.Interfaces;
 
-namespace CleanArchitecture.Infrastructure.Persistence.Entities;
+namespace CleanArchitecture.SharedKernel.Services.UserManagement;
 
 public partial class User : IAggregateRoot
 {
-    public User()
-    {
-        RefreshTokens = new HashSet<RefreshToken>();
-    }
-
     public int Id { get; set; }
     public DateTime RegisterDate { get; set; }
     public string Name { get; set; } = null!;
@@ -18,6 +13,5 @@ public partial class User : IAggregateRoot
     public bool Active { get; set; }
     public bool Deleted { get; set; }
 
-    public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
 }
 

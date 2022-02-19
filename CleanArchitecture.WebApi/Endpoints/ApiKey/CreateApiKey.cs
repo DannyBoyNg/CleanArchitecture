@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Infrastructure.Persistence.Services;
+﻿using CleanArchitecture.SharedKernel.Modules.ApiKey;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 

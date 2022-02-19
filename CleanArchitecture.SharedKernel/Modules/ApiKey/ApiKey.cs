@@ -1,6 +1,6 @@
 ﻿using CleanArchitecture.SharedKernel.Interfaces;
 
-namespace CleanArchitecture.Infrastructure.Persistence.Entities;
+namespace CleanArchitecture.SharedKernel.Modules.ApiKey;
 
 public class ApiKey : IAggregateRoot
 {

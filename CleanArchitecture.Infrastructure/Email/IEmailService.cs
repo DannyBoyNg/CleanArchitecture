@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 
-namespace CleanArchitecture.Infrastructure.EmailService
+namespace CleanArchitecture.Infrastructure.Email
 {
     public interface IEmailService
     {

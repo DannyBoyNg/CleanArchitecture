@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace CleanArchitecture.SharedKernel.Services.Jwt;
+namespace CleanArchitecture.SharedKernel.Modules.Jwt;
 
 [Serializable]
 internal class KeyNotSetException : Exception

@@ -1,7 +1,6 @@
-﻿using CleanArchitecture.Infrastructure.Persistence.Entities;
-using CleanArchitecture.SharedKernel.Interfaces;
+﻿using CleanArchitecture.SharedKernel.Interfaces;
 
-namespace CleanArchitecture.Infrastructure.Persistence.Services;
+namespace CleanArchitecture.SharedKernel.Services.UserManagement;
 
 public class UserService
 {

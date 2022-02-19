@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.SharedKernel.Services.ApiKey;
+﻿namespace CleanArchitecture.SharedKernel.Modules.ApiKey;
 
 public static class ApiKeyDefaults
 {

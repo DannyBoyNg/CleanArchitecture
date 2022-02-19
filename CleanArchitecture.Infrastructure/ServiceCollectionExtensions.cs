@@ -1,6 +1,5 @@
-﻿using CleanArchitecture.Infrastructure.Persistence;
-using CleanArchitecture.Infrastructure.Persistence.Services;
-using CleanArchitecture.SharedKernel.Services.ApiKey;
+﻿using CleanArchitecture.Infrastructure.Email;
+using CleanArchitecture.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,16 +10,13 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
-        //Get database connectionString
-        var connectionString = configuration.GetConnectionString("Database_production");
-
         //Add and configure database context
+        var connectionString = configuration.GetConnectionString("Database_production");
         services.AddDbContext<CleanArchitectureContext>(options => options.UseSqlServer(connectionString));
 
-        //Add services
-        services.AddScoped<UserService>();
-        services.AddScoped<ApiKeyService>();
-        services.AddScoped<IApiKeyValidator, ApiKeyValidationService>();
+        //Add and configure email service
+        services.AddScoped<IEmailService, EmailService>();
+        services.Configure<EmailSettings>(options => options.Host = "smtp.examplemailserver.com");
 
         return services;
     }
