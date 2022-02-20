@@ -3,7 +3,7 @@
 namespace CleanArchitecture.SharedKernel.Modules.Jwt;
 
 [Serializable]
-internal class KeyNotSetException : Exception
+public class KeyNotSetException : Exception
 {
     public KeyNotSetException()
     {

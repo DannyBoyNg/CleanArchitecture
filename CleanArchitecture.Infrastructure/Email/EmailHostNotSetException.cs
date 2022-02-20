@@ -3,7 +3,7 @@
 namespace CleanArchitecture.Infrastructure.Email
 {
     [Serializable]
-    internal class EmailHostNotSetException : Exception
+    public class EmailHostNotSetException : Exception
     {
         public EmailHostNotSetException()
         {

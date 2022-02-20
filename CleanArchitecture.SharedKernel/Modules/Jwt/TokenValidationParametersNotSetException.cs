@@ -3,7 +3,7 @@
 namespace CleanArchitecture.SharedKernel.Modules.Jwt;
 
 [Serializable]
-internal class TokenValidationParametersNotSetException : Exception
+public class TokenValidationParametersNotSetException : Exception
 {
     public TokenValidationParametersNotSetException()
     {

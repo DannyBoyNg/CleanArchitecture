@@ -3,7 +3,7 @@
 namespace CleanArchitecture.SharedKernel.Modules.Jwt;
 
 [Serializable]
-internal class InvalidAccessTokenException : Exception
+public class InvalidAccessTokenException : Exception
 {
     public InvalidAccessTokenException()
     {
