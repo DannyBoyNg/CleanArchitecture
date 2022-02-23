@@ -9,19 +9,17 @@ namespace CleanArchitecture.WebApi.Endpoints.User;
 [ApiController]
 public class CreateUser : ControllerBase
 {
-    private readonly UserService userService;
 
-    public CreateUser(UserService userService)
+    public CreateUser()
     {
-        this.userService = userService;
+
     }
 
     [HttpPost("users")]
     [SwaggerOperation(Summary = "Creates an user", Description = "Creates an user", OperationId = "User.Create", Tags = new[] { "UserEndpoint" })]
-    public async Task<ActionResult> Handle(CreateUserRequest req)
+    public IActionResult Handle(CreateUserRequest req)
     {
-        //var user = await userService.CreateUserAsync(req.Name, req.Password, req.Email);
-        return Ok();
+        return Ok(req);
     }
 }
 
