@@ -5,7 +5,7 @@ namespace CleanArchitecture.Core;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddCoreServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddCoreServices(this IServiceCollection services, IConfiguration _)
     {
         
 

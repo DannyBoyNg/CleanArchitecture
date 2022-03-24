@@ -18,7 +18,7 @@ public class CreateToken : ControllerBase
 
     [HttpPost("Token")]
     [SwaggerOperation(Summary = "Creates a Jwt Token", Description = "Creates a Jwt Token", OperationId = "Token.Create", Tags = new[] { "TokenEndpoint" })]
-    public ActionResult<JwtToken> Handle(CreateTokenRequest r)
+    public ActionResult<JwtToken> Handle(CreateTokenRequest _)
     {
         var claims = new List<Claim>
         {
