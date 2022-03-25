@@ -16,6 +16,7 @@ builder.Services.AddCoreServices(configuration);
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddSwaggerGen(options => options.EnableAnnotations());
 var app = builder.Build();
 

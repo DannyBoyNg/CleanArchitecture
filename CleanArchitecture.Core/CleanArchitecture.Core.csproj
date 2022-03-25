@@ -4,19 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Entities\**" />
-    <Compile Remove="Exceptions\**" />
-    <Compile Remove="Services\**" />
-    <EmbeddedResource Remove="Entities\**" />
-    <EmbeddedResource Remove="Exceptions\**" />
-    <EmbeddedResource Remove="Services\**" />
-    <None Remove="Entities\**" />
-    <None Remove="Exceptions\**" />
-    <None Remove="Services\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CleanArchitecture.SharedKernel\CleanArchitecture.SharedKernel.csproj" />
